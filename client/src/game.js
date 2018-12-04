@@ -10,6 +10,18 @@ const endpoint = (window.location.hostname === "localhost")
 
 const colyseus = new Colyseus.Client(endpoint);
 
+colyseus.onOpen.add(function() {
+    console.log("connection is now open");
+});
+
+colyseus.onClose.add(function() {
+    console.log("connection has been closed");
+});
+
+colyseus.onError.add(function(err) {
+    console.log("something wrong happened", err);
+});
+
 module.exports = class Game extends Phaser.Scene {
     constructor() {
         super('Game');
@@ -48,7 +60,7 @@ module.exports = class Game extends Phaser.Scene {
         var self = this;
         this.room = colyseus.join('main', {});
         this.room.onJoin.add(function() {
-            console.log('joined');
+            console.log('room joined');
             self.roomJoined = true;
         });
 
