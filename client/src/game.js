@@ -6,7 +6,7 @@ const gameConfig = require('./../../config.json');
 
 const endpoint = (window.location.hostname === "localhost")
   ? `ws://localhost:${gameConfig.serverDevPort}` // development (local)
-  : `${window.location.protocol.replace("http", "ws")}//${window.location.hostname}` // production (remote)
+  : `${window.location.protocol.replace("http", "ws")}//${window.location.hostname}:${window.location.port}` // production (remote)
 
 const colyseus = new Colyseus.Client(endpoint);
 
