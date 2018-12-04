@@ -1,0 +1,20 @@
+{
+  "name": "io-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./server/index.js",
+  "scripts": {
+    "install": "cd ./server && npm install && cd .. && cd ./client && npm install && cd .. && npm run build",
+    "build": "npm run build --prefix ./client",
+    "start": "cross-env NODE_ENV=production npm run start-production --prefix ./server",
+    "dev": "concurrently \"npm start --prefix ./server\" \"npm start --prefix ./client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Loonride",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^3.6.1",
+    "cross-env": "^5.2.0"
+  }
+}
